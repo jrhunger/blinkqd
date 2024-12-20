@@ -1,0 +1,23 @@
+services:
+  login:
+    container_name: 'blink-login'
+    build: ./build
+    restart: always
+    user: 1000:1000
+    entrypoint: [ "python", "/work/login.py" ]
+    environment:
+      - TZ=EST5EDT
+    volumes:
+      - ./work:/work
+
+  list:
+    container_name: 'blink-list'
+    build: ./build
+    restart: always
+    user: 1000:1000
+    entrypoint: [ "python", "/work/list.py" ]
+    environment:
+      - TZ=EST5EDT
+    volumes:
+      - ./work:/work
+
