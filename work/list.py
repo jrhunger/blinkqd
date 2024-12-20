@@ -3,6 +3,16 @@ from aiohttp import ClientSession
 from blinkpy.blinkpy import Blink
 from blinkpy.auth import Auth
 from blinkpy.helpers.util import json_load
+import logging
+import sys
+
+blog = logging.getLogger('blinkpy')
+blog.setLevel(logging.DEBUG)
+bhand = logging.StreamHandler(sys.stderr)
+bhand.setLevel(logging.DEBUG)
+bform = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+bhand.setFormatter(bform)
+blog.addHandler(bhand)
 
 async def start(session: ClientSession):
     blink = Blink(session=session)
